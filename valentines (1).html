@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Valentine's Day, Anawi 💕</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose: #e8547a;
+      --blush: #f9c4d2;
+      --cream: #fff7f9;
+      --gold: #d4a373;
+      --deep: #7b2d3e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--cream);
+      font-family: 'Lato', sans-serif;
+      color: var(--deep);
+      overflow-x: hidden;
+    }
+
+    /* ── FLOATING HEARTS ── */
+    .hearts-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .heart-particle {
+      position: absolute;
+      bottom: -60px;
+      font-size: 1.4rem;
+      opacity: 0;
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+      100% { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background: radial-gradient(ellipse at 60% 40%, #fde8f0 0%, var(--cream) 70%);
+    }
+
+    .hero-badge {
+      background: var(--rose);
+      color: white;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+      animation: fadeInDown 1s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 8vw, 6rem);
+      line-height: 1.1;
+      color: var(--deep);
+      animation: fadeInDown 1s 0.2s ease both;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: #a0607a;
+      margin-top: 18px;
+      max-width: 480px;
+      line-height: 1.7;
+      animation: fadeInDown 1s 0.4s ease both;
+    }
+
+    /* ── REPLACE THIS LINE ── */
+    /* 💡 CHANGE THE TEXT BELOW TO HER NAME */
+    .her-name {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--rose);
+    }
+
+    .scroll-hint {
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: fadeInDown 1s 0.8s ease both;
+      opacity: 0.6;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .scroll-hint .arrow {
+      width: 20px; height: 20px;
+      border-right: 2px solid var(--rose);
+      border-bottom: 2px solid var(--rose);
+      transform: rotate(45deg);
+      animation: bounce 1.5s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(6px); }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      color: var(--deep);
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+
+    /* ── LOVE LETTER ── */
+    .love-letter {
+      background: white;
+      border: 1px solid #f5c2d3;
+      border-radius: 16px;
+      padding: 48px 40px;
+      box-shadow: 0 8px 40px rgba(232,84,122,0.08);
+      position: relative;
+      line-height: 1.9;
+      font-size: 1.05rem;
+      color: #5a2c3e;
+    }
+    .love-letter::before {
+      content: '❝';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--blush);
+      position: absolute;
+      top: 10px; left: 20px;
+      line-height: 1;
+    }
+    .love-letter p { margin-bottom: 16px; }
+    .love-letter .sign {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--rose);
+      margin-top: 24px;
+    }
+
+    /* ── PHOTO GALLERY ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      cursor: pointer;
+      background: var(--blush);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.04);
+      box-shadow: 0 14px 40px rgba(232,84,122,0.25);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.3s;
+    }
+    .gallery-item .placeholder-emoji {
+      font-size: 2.5rem;
+      flex-direction: column;
+      gap: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--rose);
+    }
+    .gallery-item .placeholder-text {
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      color: var(--rose);
+      text-transform: uppercase;
+    }
+    .gallery-item .caption-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(123,45,62,0.85));
+      color: white;
+      padding: 28px 12px 12px;
+      font-size: 0.78rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+    .gallery-item:hover .caption-overlay {
+      transform: translateY(0);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(40,10,20,0.92);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 75vh;
+      border-radius: 14px;
+      object-fit: contain;
+      box-shadow: 0 0 60px rgba(232,84,122,0.4);
+    }
+    .lightbox-caption {
+      color: var(--blush);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+
+    /* ── HIDDEN MESSAGES ── */
+    .messages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .message-card {
+      background: white;
+      border-radius: 16px;
+      padding: 0;
+      cursor: pointer;
+      border: 2px solid var(--blush);
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+      min-height: 160px;
+      perspective: 600px;
+    }
+    .message-card:hover:not(.revealed) {
+      transform: scale(1.03);
+      box-shadow: 0 10px 30px rgba(232,84,122,0.2);
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      min-height: 160px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+    }
+    .message-card.revealed .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 16px;
+      border-radius: 14px;
+    }
+    .card-front {
+      background: linear-gradient(135deg, #fff0f5 0%, #ffe3ee 100%);
+      gap: 10px;
+    }
+    .card-front .envelope-icon {
+      font-size: 2.5rem;
+      animation: wiggle 2s ease-in-out infinite;
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+    }
+    .card-front .tap-hint {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rose);
+      opacity: 0.7;
+    }
+    .card-front .card-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      color: var(--deep);
+      font-style: italic;
+    }
+
+    .card-back {
+      background: var(--rose);
+      transform: rotateY(180deg);
+      color: white;
+      text-align: center;
+    }
+    .card-back .message-icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .card-back .message-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ── WISH / INTERACTIVE ── */
+    .wish-section {
+      text-align: center;
+    }
+    .wish-prompt {
+      font-size: 1.1rem;
+      color: #a0607a;
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+    .wish-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+    .wish-btn {
+      background: white;
+      border: 2px solid var(--blush);
+      color: var(--deep);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      padding: 14px 26px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .wish-btn:hover {
+      background: var(--rose);
+      border-color: var(--rose);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(232,84,122,0.3);
+    }
+    .wish-btn.selected {
+      background: var(--deep);
+      border-color: var(--deep);
+      color: white;
+    }
+    .wish-response {
+      margin-top: 40px;
+      padding: 28px 32px;
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--blush);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--deep);
+      display: none;
+      animation: fadeInDown 0.5s ease both;
+      line-height: 1.8;
+    }
+    .wish-response.visible { display: block; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      text-align: center;
+      font-size: 1.3rem;
+      letter-spacing: 12px;
+      color: var(--blush);
+      margin: 0 auto;
+      padding: 10px 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 60px 20px 80px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: #c07090;
+    }
+    footer .big-heart {
+      font-size: 3.5rem;
+      display: block;
+      margin-bottom: 14px;
+      animation: heartbeat 1.2s ease infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.18); }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating hearts background -->
+<div class="hearts-bg" id="heartsContainer"></div>
+
+<!-- ════════════════ HERO ════════════════ -->
+<div class="hero">
+  <div class="hero-badge">💕 February 14th, 2026</div>
+  <!-- 💡 CHANGE "Anawi" to her name below -->
+  <h1>Happy Valentine's<br>Day, <em>Anawi</em></h1>
+  <p class="hero-sub">
+    Every day with you is a gift. But today, I wanted to make something just for you — because you deserve the whole world. 🌸
+  </p>
+  <div class="scroll-hint">
+    <span>Scroll down</span>
+    <div class="arrow"></div>
+  </div>
+</div>
+
+<div class="divider fade-in">♥ ♥ ♥</div>
+
+<!-- ════════════════ LOVE LETTER ════════════════ -->
+<section class="fade-in">
+  <p class="section-label">A letter for you</p>
+  <h2 class="section-title">From my heart<br>to yours</h2>
+  <div class="love-letter">
+    <!-- 💡 REPLACE EVERYTHING BELOW with your own message to her! -->
+    <p>
+      To the girl who makes every ordinary moment feel extraordinary —
+    </p>
+    <p>
+      I still remember the moment I first saw you during the exams. You looked so pretty without even trying, You are naturally funny with a 
+      great sense of humor and you are so understanding and you make me feel like the luckiest person alive just by choosing to be with me.
+    </p>
+    <p>
+      You are my favorite person, my safe place, and my biggest reason to smile. 
+      I love everything about you, even the little things you think I don't notice. I notice everything.
+    </p>
+    <p>
+      This Valentine's Day, I just want you to know that you are loved more than words can convey. 
+      And I promise to keep showing you that every single day. I hope we stay together forever❤️
+    </p>
+    <!-- 💡 CHANGE "Rounak" below to your actual name -->
+    <div class="sign">Forever yours, Rounak 💕</div>
+  </div>
+</section>
+
+<div class="divider fade-in">♥ ♥ ♥</div>
+
+<!-- ════════════════ PHOTO GALLERY ════════════════ -->
+<section class="fade-in">
+  <p class="section-label">Our memories</p>
+  <h2 class="section-title">A little gallery<br>of us ✨</h2>
+  <div class="gallery-grid" id="galleryGrid">
+
+    <!-- 💡 HOW TO ADD YOUR PHOTOS:
+         Replace the placeholder divs below with:
+         <img src="YOUR_PHOTO_FILENAME.jpg" alt="caption">
+         and update the caption text.
+         Example: <img src="beach_day.jpg" alt="Our trip to the beach"> -->
+
+    <!-- PHOTO 1 -->
+    <div class="gallery-item" data-caption="One of the first pics we took together and I can never forget it 💗" onclick="openLightbox(this)">
+      <img src="photo1.jpg" alt="Our first photo">
+      <div class="caption-overlay">One of the first pics we took together 💗</div>
+    </div>
+
+    <!-- PHOTO 2 -->
+    <div class="gallery-item" data-caption="One of our cutest pics ❤️❤️" onclick="openLightbox(this)">
+      <img src="photo2.jpg" alt="Our first photo">
+      <div class="caption-overlay">One of our cutest pics ❤️❤️ 🌅</div>
+    </div>
+
+    <!-- PHOTO 3 -->
+    <div class="gallery-item" data-caption="YOU ARE SO GORGEOUSSS 🛐" onclick="openLightbox(this)">
+      <img src="photo3.jpg" alt="Our first photo">
+      <div class="caption-overlay">YOU ARE SO GORGEOUSSS 🛐</div>
+    </div>
+
+    <!-- PHOTO 4 -->
+    <div class="gallery-item" data-caption="DAMN YOU LOOK SO PRETTYYYY 🌸" onclick="openLightbox(this)">
+      <img src="photo4.jpg" alt="Our first photo">
+      <div class="caption-overlay">DAMN YOU LOOK SO PRETTYYYY 🌸</div>
+    </div>
+
+    <!-- PHOTO 5 -->
+    <div class="gallery-item" data-caption=" <3 " onclick="openLightbox(this)">
+      <img src="photo5.jpg" alt="Our first photo">
+      <div class="caption-overlay"> <3 </div>
+    </div>
+
+    <!-- PHOTO 6 -->
+    <div class="gallery-item" data-caption=" DIVAAAA 💕 " onclick="openLightbox(this)">
+      <img src="photo6.jpg" alt="Our first photo">
+      <div class="caption-overlay"> DIVAAAA 💕</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="">
+  <p class="lightbox-caption" id="lightboxCaption"></p>
+</div>
+
+<div class="divider fade-in">♥ ♥ ♥</div>
+
+<!-- ════════════════ HIDDEN MESSAGES ════════════════ -->
+<section class="fade-in">
+  <p class="section-label">Just for you</p>
+  <h2 class="section-title">Little love notes<br>— tap to reveal 💌</h2>
+  <div class="messages-grid">
+
+    <!-- 💡 CHANGE THE MESSAGE TEXT inside each card-back to your own messages! -->
+
+    <div class="message-card" onclick="revealCard(this)">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="envelope-icon">💌</div>
+          <div class="card-number">Note #1</div>
+          <div class="tap-hint">Tap to reveal</div>
+        </div>
+        <div class="card-back">
+          <div class="message-icon">🌸</div>
+          <div class="message-text">"The way you laugh is my favorite sound in the entire world."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-card" onclick="revealCard(this)">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="envelope-icon">💌</div>
+          <div class="card-number">Note #2</div>
+          <div class="tap-hint">Tap to reveal</div>
+        </div>
+        <div class="card-back">
+          <div class="message-icon">✨</div>
+          <div class="message-text">"You make me want to be better every single day."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-card" onclick="revealCard(this)">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="envelope-icon">💌</div>
+          <div class="card-number">Note #3</div>
+          <div class="tap-hint">Tap to reveal</div>
+        </div>
+        <div class="card-back">
+          <div class="message-icon">🌹</div>
+          <div class="message-text">"Waking up knowing I get to talk to you today is a gift I never take for granted."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-card" onclick="revealCard(this)">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="envelope-icon">💌</div>
+          <div class="card-number">Note #4</div>
+          <div class="tap-hint">Tap to reveal</div>
+        </div>
+        <div class="card-back">
+          <div class="message-icon">💫</div>
+          <div class="message-text">"In a world full of noise, you are my calm."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-card" onclick="revealCard(this)">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="envelope-icon">💌</div>
+          <div class="card-number">Note #5</div>
+          <div class="tap-hint">Tap to reveal</div>
+        </div>
+        <div class="card-back">
+          <div class="message-icon">🦋</div>
+          <div class="message-text">"I still get butterflies. I think I always will."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-card" onclick="revealCard(this)">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="envelope-icon">💌</div>
+          <div class="card-number">Note #6</div>
+          <div class="tap-hint">Tap to reveal</div>
+        </div>
+        <div class="card-back">
+          <div class="message-icon">❤️</div>
+          <div class="message-text">"Choosing you was the easiest and best thing I've ever done."</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider fade-in">♥ ♥ ♥</div>
+
+<!-- ════════════════ VALENTINE'S WISH ════════════════ -->
+<section class="fade-in wish-section">
+  <p class="section-label">Your choice</p>
+  <h2 class="section-title">What do you want<br>for Valentine's Day? 🎁</h2>
+  <!-- 💡 CHANGE the button options to things YOU can actually offer her! -->
+  <p class="wish-prompt">Pick one (or all of them 😏)</p>
+  <div class="wish-buttons">
+    <button class="wish-btn" onclick="selectWish(this, 'dinner')">🍽️ A romantic dinner</button>
+    <button class="wish-btn" onclick="selectWish(this, 'movie')">🎬 A cozy movie night</button>
+    <button class="wish-btn" onclick="selectWish(this, 'bhindi')">🫛 Bhindi ka Bhujia</button>
+    <button class="wish-btn" onclick="selectWish(this, 'cuddles')">🧸 Just cuddles & you</button>
+    <button class="wish-btn" onclick="selectWish(this, 'all')">💕 All of the above!</button>
+  </div>
+  <div class="wish-response" id="wishResponse"></div>
+</section>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer>
+  <span class="big-heart">❤️</span>
+  <!-- 💡 CHANGE "Anawi" to her name and "Rounak" to yours! -->
+  Happy Valentine's Day, Anawi.<br>
+  Made with love by Rounak, just for you. 💕
+</footer>
+
+<script>
+  // ── FLOATING HEARTS ──
+  const emojis = ['❤️','💕','💗','💖','🌸','💝','✨'];
+  const container = document.getElementById('heartsContainer');
+  for (let i = 0; i < 18; i++) {
+    const h = document.createElement('span');
+    h.className = 'heart-particle';
+    h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.fontSize = (0.8 + Math.random() * 1.4) + 'rem';
+    h.style.animationDuration = (8 + Math.random() * 14) + 's';
+    h.style.animationDelay = (Math.random() * 12) + 's';
+    container.appendChild(h);
+  }
+
+  // ── SCROLL FADE-IN ──
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // ── GALLERY LIGHTBOX ──
+  function openLightbox(item) {
+    const img = item.querySelector('img');
+    const caption = item.getAttribute('data-caption');
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const lbCap = document.getElementById('lightboxCaption');
+    if (img) {
+      lbImg.src = img.src;
+      lbImg.style.display = 'block';
+    } else {
+      lbImg.style.display = 'none';
+    }
+    lbCap.textContent = caption || '';
+    lb.classList.add('active');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+
+  // ── REVEAL CARDS ──
+  function revealCard(card) {
+    card.classList.toggle('revealed');
+  }
+
+  // ── WISH RESPONSES ──
+  // 💡 You can change these responses to be funnier or more personal!
+  const wishResponses = {
+    dinner: '🍷 A romantic dinner it is! I already have the perfect place in mind... or maybe I\'ll cook for you. Either way, it\'s going to be special, just like you. 💕',
+    movie: '🍿 Cozy movie night? Perfect. Blankets, your favorite snacks, and you in my arms. I\'m already looking forward to it. 🎬',
+    adventure: '🗺️ Let\'s go somewhere we\'ve never been! Every adventure is better with you by my side. 🌅',
+    cuddles: '🧸 My absolute favorite option. Just us, nowhere to be, all day. That sounds like a perfect Valentine\'s Day to me. ❤️',
+    all: '😂💕 You want ALL of it? Honestly? So do I. Let\'s do everything — dinner, movies, adventures, and lots of cuddles. You deserve all of it!'
+  };
+
+  function selectWish(btn, type) {
+    document.querySelectorAll('.wish-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    const resp = document.getElementById('wishResponse');
+    resp.textContent = wishResponses[type];
+    resp.classList.add('visible');
+    resp.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+</body>
+</html>
